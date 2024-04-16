@@ -7,6 +7,14 @@ body{
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 1.5rem;
-
 }
 
+.nes-container img {
+    width: 250px; 
+    height: auto; 
+    margin: 0 auto; 
+  }
+
+body{
+    background-color: beige;
+}

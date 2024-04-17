@@ -16,5 +16,22 @@ body{
   }
 
 body{
-    background-color: beige;
+    background-color: white;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    max-width: 600px;
+    gap: 2rem;
+    margin: 2rem auto;
+}
+
+.acoes{
+    display: flex;
+    justify-content: space-around;
+}
+
+.cadastrar-sugestao{
+    text-align: center;
 }

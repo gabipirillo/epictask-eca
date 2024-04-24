@@ -10,40 +10,43 @@ document.querySelector("#botao-cadastrar").addEventListener("click", ()=> {
 
     validar(tarefa)
     
-    console.log(tarefa)
+    salvar(tarefa)
 
 })
 
+function salvar(tarefa){
+    const tarefas = JSON.parse(localStorage.getItem("tarefas")) || []
+    tarefas.push(tarefa)
+    localStorage.setItem("tarefas", JSON.stringify(tarefas))
+    window.location.href = "index.html"
+}
+
 function validar (tarefa){
-    // limparError()
+    limparError()
     if (tarefa.titulo.trim() == ""){
         document.querySelector("#titulo").classList.add("is-error")
         document.querySelector("#titulo-erro").innerText = "Nome do produto é obrigatorio"
-        console.log("Tópico Reprovado. Insira os dados corretamente");
-    } else{
-        limparError();
-        console.log("Tópico Aprovado");
     }
     if (tarefa.descricao.trim() == "" || tarefa.descricao.lenght <10){
         document.querySelector("#descricao").classList.add("is-error")
         document.querySelector("#descricao-erro").innerText = "Descrição deve ter pelo menos 10 caracteres"
-        console.log("Tópico Reprovado. Insira os dados corretamente");
-    }else{
-        limparError();
-        console.log("Tópico Aprovado");
     }
     if (tarefa.pontos <=0){
         document.querySelector("#pontos").classList.add("is-error")
         document.querySelector("#pontos-erro").innerText = "pontos deve ser maior que zero "
-        console.log("Tópico Reprovado. Insira os dados corretamente");
-    }else{
-        limparError();
-        console.log("Tópico Aprovado");
     }
 }
 
 function limparError(){
-    //Todo percorrer o array
-    const errorElements = document.querySelectorAll("input.is-error, textarea.is-error")
-    errorElements.forEach(element => element.classList.remove("is-error"))
+    const campos = document
+                .querySelectorAll("input.is-error, textarea.is-error")
+       
+    
+    campos
+        .forEach(input =>{input.classList.remove("is-error")})
+
+    document.querySelectorAll(".nes-field span")
+            .forEach(span => span.innerText = "")
+        // .classList
+        // .remove("is-error")
 }
